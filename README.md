@@ -10,7 +10,6 @@ There are multiple files:
 | name | description |
 | --- | --- |
 | raw-text-parser.js | parses into raw text|
-| annotated-parser.js | annotates with \<clickable> and \<typable> tags|
-| agent-parser.js | output not cleaned from \<br> tags etc.|
+| annotated-parser.js | annotates with \<clickable> and \<typable> tags |
 
 
