@@ -1,5 +1,5 @@
 # js-never-parser
-A js parser for parsing websites into annotated text. 
+A js parser for parsing websites into annotated text yb executing it inside their context. 
 Features:
 - removes occluded elements
 - parses shadowDOM
