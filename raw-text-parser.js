@@ -22,21 +22,8 @@ if(el.nodeType === Node.ELEMENT_NODE && el.ownerDocument === document){
 return false;
 }
 
-function isClickable(node) {
-if(node.nodeType === Node.ELEMENT_NODE){
-    return node.matches('a, button, select, option, area, input[type="submit"], input[type="button"], input[type="reset"], input[type="radio"], input[type="checkbox"], [role="button"], [role="link"], [role="checkbox"], [role="menuitemcheckbox"] , [role="menuitemradio"], [role="option"], [role="radio"], [role="switch"], [role="tab"], [role="treeitem"], [onclick]')
-}else{
-    return false
-}
-}
 
-function isTypeable(node) {
-if(node.nodeType === Node.ELEMENT_NODE){
-    return node.matches('input[type="text"],input[type="password"],input[type="email"],input[type="search"],input[type="tel"],input[type="url"],input[type="number"],textarea,[role="textbox"], [role="search"], [role="searchbox"], [role="combobox"], [onkeydown],[onkeypress],[onkeyup]')
-}else{
-    return false
-}
-}
+
 
 function deShadow(element) {
 if(!element){
@@ -66,37 +53,13 @@ if (element.shadowRoot) {
         newNode.appendChild(deShadow(node))
     }
 }
-if(isClickable(element)){
-    var clickable = document.createElement('CLICKABLE');
-    while (newNode.firstChild) {
-        clickable.appendChild(newNode.firstChild);
-    }
-    if(clickable.innerText == ""){
-        let replacer =  element.title || element.ariaLabel || element.placeholder || element.value;
-        if(replacer){
-            clickable.appendChild(document.createTextNode(replacer))
-        }
-    }
-    return clickable
-}if(isTypeable(element)){
-    var typeable = document.createElement('TYPEABLE');
-    while (newNode.firstChild) {
-        typeable.appendChild(newNode.firstChild);
-    }
-    if(typeable.innerText == ""){
-        let replacer = element.title || element.ariaLabel || element.alt || element.value;
-        if(replacer){
-            typeable.appendChild(document.createTextNode(replacer))
-        }
-    }
-    return typeable
-}else if(newNode.nodeType !== Node.TEXT_NODE){
+if(newNode.nodeType !== Node.TEXT_NODE){
     var removeable = document.createElement('REMOVEABLE');
     while (newNode.firstChild) {
         removeable.appendChild(newNode.firstChild);
     }
     if(removeable.innerText == ""){
-        let replacer = element.title || element.ariaLabel || element.placeholder || element.alt;
+        let replacer = element.title || element.ariaLabel || element.placeholder || element.alt || element.value;
         if(replacer){
             removeable.appendChild(document.createTextNode(replacer))
         }else{
