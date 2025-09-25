@@ -14,7 +14,7 @@ if(el.nodeType === Node.ELEMENT_NODE && el.ownerDocument === document){
             let bottom = Math.min(rect.bottom, topRect.bottom)
             if(right<left || bottom<top) return false
             let intersectArea = (right-left)*(bottom-top)
-            return intersectArea/elArea>0.8
+            return intersectArea/elArea>0.5
         }
     }
     
