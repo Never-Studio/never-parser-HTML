@@ -15,7 +15,7 @@ function isOccluded(el) {
 				let bottom = Math.min(rect.bottom, topRect.bottom)
 				if(right<left || bottom<top) return false//check if the intersection box is valid
 				let intersectArea = (right-left)*(bottom-top)//get the area of the intersection
-				return intersectArea/elArea>0.8//treat element as occluded when over 80% of its are is occluded
+				return intersectArea/elArea>0.5//treat element as occluded when over 80% of its are is occluded
 			}
 		}
 		
